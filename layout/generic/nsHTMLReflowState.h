@@ -288,6 +288,11 @@ struct nsHTMLReflowState : public nsCSSOffsetState {
   // This takes on an arbitrary value the first time a block is reflowed
   nscoord mBlockDelta;
 
+  // XXX this will need to change when we make mComputedOffsets logical;
+  // we won't be able to return a reference for the physical offsets
+  const nsMargin& ComputedPhysicalOffsets() const { return mComputedOffsets; }
+  nsMargin& ComputedPhysicalOffsets() { return mComputedOffsets; }
+
 private:
   // The computed width specifies the frame's content area width, and it does
   // not apply to inline non-replaced elements
@@ -533,6 +538,15 @@ public:
                                      nscoord aContainingBlockHeight,
                                      nsMargin& aComputedOffsets);
 
+  // If a relatively positioned element, adjust the position appropriately.
+  static void ApplyRelativePositioning(nsIFrame* aFrame,
+                                       const nsMargin& aComputedOffsets,
+                                       nsPoint* aPosition);
+
+  void ApplyRelativePositioning(nsPoint* aPosition) const {
+    ApplyRelativePositioning(frame, ComputedPhysicalOffsets(), aPosition);
+  }
+  
 #ifdef DEBUG
   // Reflow trace methods.  Defined in nsFrame.cpp so they have access
   // to the display-reflow infrastructure.

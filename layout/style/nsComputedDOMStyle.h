@@ -25,6 +25,7 @@ class Element;
 }
 }
 
+struct nsComputedStyleMap;
 class nsIFrame;
 class nsIPresShell;
 class nsDOMCSSValueList;
@@ -94,6 +95,9 @@ public:
   virtual void GetCSSParsingEnvironment(CSSParsingEnvironment& aCSSParseEnv) MOZ_OVERRIDE;
 
   static nsROCSSPrimitiveValue* MatrixToCSSValue(gfx3DMatrix& aMatrix);
+
+  static void RegisterPrefChangeCallbacks();
+  static void UnregisterPrefChangeCallbacks();
 
 private:
   void AssertFlushedPendingReflows() {
@@ -390,12 +394,14 @@ private:
   mozilla::dom::CSSValue* DoGetAnimationPlayState();
 
   /* CSS Flexbox properties */
+  mozilla::dom::CSSValue* DoGetAlignContent();
   mozilla::dom::CSSValue* DoGetAlignItems();
   mozilla::dom::CSSValue* DoGetAlignSelf();
   mozilla::dom::CSSValue* DoGetFlexBasis();
   mozilla::dom::CSSValue* DoGetFlexDirection();
   mozilla::dom::CSSValue* DoGetFlexGrow();
   mozilla::dom::CSSValue* DoGetFlexShrink();
+  mozilla::dom::CSSValue* DoGetFlexWrap();
   mozilla::dom::CSSValue* DoGetOrder();
   mozilla::dom::CSSValue* DoGetJustifyContent();
 
@@ -491,17 +497,7 @@ private:
   bool GetFrameBorderRectWidth(nscoord& aWidth);
   bool GetFrameBorderRectHeight(nscoord& aHeight);
 
-  struct ComputedStyleMapEntry
-  {
-    // Create a pointer-to-member-function type.
-    typedef mozilla::dom::CSSValue* (nsComputedDOMStyle::*ComputeMethod)();
-
-    nsCSSProperty mProperty;
-    ComputeMethod mGetter;
-    bool mNeedsLayoutFlush;
-  };
-
-  static const ComputedStyleMapEntry* GetQueryablePropertyMap(uint32_t* aLength);
+  static nsComputedStyleMap* GetComputedStyleMap();
 
   // We don't really have a good immutable representation of "presentation".
   // Given the way GetComputedStyle is currently used, we should just grab the

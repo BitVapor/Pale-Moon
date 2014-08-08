@@ -78,6 +78,7 @@
 #include "nsSVGTextFrame2.h"
 #include "nsStyleStructInlines.h"
 #include "nsStyleTransformMatrix.h"
+#include "nsComputedDOMStyle.h"
 
 #include "mozilla/dom/PBrowserChild.h"
 #include "mozilla/dom/TabChild.h"
@@ -4937,6 +4938,8 @@ nsLayoutUtils::Initialize()
   Preferences::RegisterCallback(FlexboxEnabledPrefChangeCallback,
                                 FLEXBOX_ENABLED_PREF_NAME);
   FlexboxEnabledPrefChangeCallback(FLEXBOX_ENABLED_PREF_NAME, nullptr);
+
+  nsComputedDOMStyle::RegisterPrefChangeCallbacks();
 }
 
 /* static */
@@ -4950,6 +4953,8 @@ nsLayoutUtils::Shutdown()
 
   Preferences::UnregisterCallback(FlexboxEnabledPrefChangeCallback,
                                   FLEXBOX_ENABLED_PREF_NAME);
+                                  
+  nsComputedDOMStyle::UnregisterPrefChangeCallbacks();
 }
 
 /* static */
