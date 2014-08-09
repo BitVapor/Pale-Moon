@@ -272,12 +272,14 @@ LOCAL_INCLUDES	+= -I$(srcdir)/../base \
 		   -I$(srcdir)/../forms \
 		   -I$(srcdir)/../tables \
 		   -I$(srcdir)/../style \
-		   -I$(srcdir)/../xul/base/src \
+		   -I$(srcdir)/../xul \
+		   -I$(srcdir)/../inspector \
 		   -I$(srcdir)/../mathml \
 		   -I$(topsrcdir)/content/base/src \
 		   -I$(topsrcdir)/content/canvas/src \
 		   -I$(topsrcdir)/content/html/content/src \
 		   -I$(topsrcdir)/content/html/document/src \
+		   -I$(topsrcdir)/content/svg/content/src \
 		   -I$(topsrcdir)/content/xslt/src/base \
 		   -I$(topsrcdir)/content/xslt/src/xml \
 		   -I$(topsrcdir)/content/xslt/src/xpath \
@@ -287,8 +289,10 @@ LOCAL_INCLUDES	+= -I$(srcdir)/../base \
 		   -I$(topsrcdir)/content/xul/templates/src \
 		   -I$(topsrcdir)/content/events/src \
 		   -I$(topsrcdir)/content/xbl/src \
+		   -I$(topsrcdir)/docshell/base \
 		   -I$(topsrcdir)/view/src \
 		   -I$(topsrcdir)/dom/base \
+		   -I$(topsrcdir)/dom/camera \
 		   -I$(topsrcdir)/dom/file \
 		   -I$(topsrcdir)/dom/src/json \
 		   -I$(topsrcdir)/dom/src/jsurl \
@@ -298,6 +302,7 @@ LOCAL_INCLUDES	+= -I$(srcdir)/../base \
 		   -I$(topsrcdir)/dom/audiochannel \
 		   -I$(topsrcdir)/dom/telephony \
 		   -I$(topsrcdir)/dom/media \
+#		   -I$(topsrcdir)/dom/speakermanager \
 		   -I. \
 		   -I$(topsrcdir)/editor/libeditor/base \
 		   -I$(topsrcdir)/editor/libeditor/text \
@@ -309,7 +314,6 @@ LOCAL_INCLUDES	+= -I$(srcdir)/../base \
 		   -I$(topsrcdir)/js/xpconnect/loader \
 		   -I$(topsrcdir)/caps/include \
 		   -I$(topsrcdir)/netwerk/base/src \
-		   -I$(topsrcdir)/content/svg/content/src \
 		   -I$(topsrcdir)/extensions/cookie \
 		   -I$(topsrcdir)/netwerk/cookie \
 		   $(NULL)

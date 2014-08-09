@@ -11,12 +11,10 @@ PARALLEL_DIRS += [
     'forms',
     'tables',
     'svg',
-    'xul/base/public',
-    'xul/base/src',
+    'xul',
     'ipc',
     'mathml',
-    'inspector/public',
-    'inspector/src',
+    'inspector',
     'tools/recording',
 ]
 

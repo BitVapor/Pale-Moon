@@ -8,3 +8,8 @@ MODULE = 'layout'
 
 LIBRARY_NAME = 'gkmedias'
 
+if CONFIG['GKMEDIAS_SHARED_LIBRARY']:
+    FORCE_SHARED_LIB = True
+
+if CONFIG['MOZ_WEBRTC']:
+    DIRS += ['webrtc']

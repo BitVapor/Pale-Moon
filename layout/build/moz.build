@@ -18,3 +18,55 @@ CPP_SOURCES += [
     'nsLayoutStatics.cpp',
 ]
 
+if CONFIG['MOZ_NFC']:
+    LOCAL_INCLUDES += [
+        '/dom/nfc'
+    ]
+
+FAIL_ON_WARNINGS = True
+
+MSVC_ENABLE_PGO = True
+
+LIBRARY_NAME = 'gklayout'
+
+include('/ipc/chromium/chromium-config.mozbuild')
+
+
+if CONFIG['MOZ_WIDGET_TOOLKIT'] in ('qt', 'gtk2', 'gtk3'):
+    LOCAL_INCLUDES += [
+        '/dom/system/unix',
+    ]
+elif CONFIG['MOZ_WIDGET_TOOLKIT'] == 'windows':
+    LOCAL_INCLUDES += [
+        '/dom/system/windows',
+    ]
+elif CONFIG['MOZ_WIDGET_TOOLKIT'] == 'cocoa':
+    LOCAL_INCLUDES += [
+        '/dom/system/mac',
+    ]
+elif CONFIG['MOZ_WIDGET_TOOLKIT'] == 'android':
+    LOCAL_INCLUDES += [
+        '/dom/system',
+        '/dom/system/android',
+    ]
+elif CONFIG['MOZ_WIDGET_TOOLKIT'] == 'gonk':
+    LOCAL_INCLUDES += [
+        '/dom/system/gonk',
+    ]
+
+if CONFIG['MOZ_B2G_FM']:
+    LOCAL_INCLUDES += [
+        '/dom/fmradio',
+    ]
+
+if CONFIG['MOZ_B2G_BT']:
+    LOCAL_INCLUDES += [
+        '/dom/bluetooth',
+    ]
+
+if CONFIG['MOZ_WEBSPEECH']:
+    LOCAL_INCLUDES += [
+        '/content/media/webspeech/synth',
+    ]
+
+FINAL_LIBRARY = 'xul'
