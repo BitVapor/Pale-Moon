@@ -93,9 +93,7 @@ protected:
                                      nscoord aConsumed = NS_INTRINSICSIZE) const;
 
   virtual int
-  GetLogicalSkipSides(const nsHTMLReflowState* aReflowState = nullptr) const {
-    return 0;
-  }
+  GetLogicalSkipSides(const nsHTMLReflowState* aReflowState = nullptr) const;
   
 #ifdef DEBUG
   virtual void DumpBaseRegressionData(nsPresContext* aPresContext, FILE* out, int32_t aIndent) MOZ_OVERRIDE;

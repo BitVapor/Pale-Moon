@@ -9,6 +9,7 @@
  */
 
 #include "nsSplittableFrame.h"
+#include "nsContainerFrame.h"
 #include "nsIContent.h"
 #include "nsPresContext.h"
 #include "nsStyleContext.h"

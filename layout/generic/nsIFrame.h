@@ -2383,7 +2383,17 @@ public:
   /**
    * Determine whether borders should not be painted on certain sides of the
    * frame.
+   * @note See also bug 743402, comment 11
    */
+#define LOGICAL_SIDE_B_START 1
+#define LOGICAL_SIDE_I_START 2
+#define LOGICAL_SIDE_B_END   4
+#define LOGICAL_SIDE_I_END   8
+#define LOGICAL_SIDES_I_BOTH (LOGICAL_SIDE_I_START | LOGICAL_SIDE_I_END)
+#define LOGICAL_SIDES_B_BOTH (LOGICAL_SIDE_B_START | LOGICAL_SIDE_B_END)
+#define LOGICAL_SIDES_ALL (LOGICAL_SIDE_I_START | LOGICAL_SIDE_I_END | \
+                           LOGICAL_SIDE_B_START | LOGICAL_SIDE_B_END)
+   
   virtual int GetSkipSides() const { return 0; }
 
   /**

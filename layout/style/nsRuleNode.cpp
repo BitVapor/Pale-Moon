@@ -1118,6 +1118,8 @@ static void SetStyleImage(nsStyleContext* aStyleContext,
 #define SETDSC_ENUMERATED             0x80   // E
 #define SETDSC_NONE                   0x100  // O
 #define SETDSC_SYSTEM_FONT            0x2000
+#define SETDSC_UNSET_INHERIT          0x00400000
+#define SETDSC_UNSET_INITIAL          0x00800000
 
 // no caller cares whether aField was changed or not
 template <typename FieldT,

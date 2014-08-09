@@ -129,6 +129,16 @@ public:
   // rendering context to use for measurement
   nsRenderingContext* rendContext;
 
+  const nsMargin& ComputedPhysicalMargin() const { return mComputedMargin; }
+  const nsMargin& ComputedPhysicalBorderPadding() const { return mComputedBorderPadding; }
+  const nsMargin& ComputedPhysicalPadding() const { return mComputedPadding; }
+
+  // We may need to eliminate the (few) users of these writable-reference accessors
+  // as part of migrating to logical coordinates.
+  nsMargin& ComputedPhysicalMargin() { return mComputedMargin; }
+  nsMargin& ComputedPhysicalBorderPadding() { return mComputedBorderPadding; }
+  nsMargin& ComputedPhysicalPadding() { return mComputedPadding; }
+
   // Computed margin values
   nsMargin         mComputedMargin;
 
